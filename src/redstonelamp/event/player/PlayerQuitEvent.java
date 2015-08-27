@@ -6,10 +6,12 @@ import redstonelamp.event.Listener;
 
 public class PlayerQuitEvent extends Event {
 	private Player player;
+	private String message;
 	private Event e = this;
 	
-	public PlayerQuitEvent(Player player) {
+	public PlayerQuitEvent(Player player, String message) {
 		this.player = player;
+		this.message = message;
 	}
 	
 	public void execute(Listener listener) {
@@ -18,5 +20,13 @@ public class PlayerQuitEvent extends Event {
 	
 	public Player getPlayer() {
 		return this.player;
+	}
+	
+	public String getQuitMessage(){
+		return this.message;
+	}
+	
+	public void setQuitMessage(String message){
+		this.message = message;
 	}
 }
