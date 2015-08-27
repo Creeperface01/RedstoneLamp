@@ -6,9 +6,10 @@ import redstonelamp.event.Listener;
 
 public class PlayerJoinEvent extends Event {
 	private Player player;
+	private String message;
 	private Event e = this;
 	
-	public PlayerJoinEvent(Player player) {
+	public PlayerJoinEvent(Player player. String message) {
 		this.player = player;
 	}
 	
@@ -18,5 +19,13 @@ public class PlayerJoinEvent extends Event {
 	
 	public Player getPlayer() {
 		return this.player;
+	}
+	
+	public String getJoinMessage(){
+		return this.message;
+	}
+	
+	public void setJoinMessage(String message){
+		this.message = message;
 	}
 }
