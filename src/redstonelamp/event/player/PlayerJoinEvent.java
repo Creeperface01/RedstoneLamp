@@ -9,7 +9,7 @@ public class PlayerJoinEvent extends Event {
 	private String message;
 	private Event e = this;
 	
-	public PlayerJoinEvent(Player player. String message) {
+	public PlayerJoinEvent(Player player, String message) {
 		this.player = player;
 		this.message = message;
 	}
