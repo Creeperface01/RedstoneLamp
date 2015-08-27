@@ -11,6 +11,7 @@ public class PlayerJoinEvent extends Event {
 	
 	public PlayerJoinEvent(Player player. String message) {
 		this.player = player;
+		this.message = message;
 	}
 	
 	public void execute(Listener listener) {
