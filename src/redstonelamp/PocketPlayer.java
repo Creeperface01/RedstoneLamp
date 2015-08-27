@@ -400,9 +400,10 @@ public class PocketPlayer extends Human implements Player{
         stp.time = (int) getLocation().getLevel().getTime();
         stp.started = true;
         sendDataPacket(stp);
-
-        server.broadcast(TextFormat.YELLOW+username+" joined the game.");
-        server.throwEvent(new PlayerJoinEvent(this));
+	
+	PlayerJoinEvent event = new PlayerJoinEvent(this, TextFormat.YELLOW+username+" joined the game.");
+        server.throwEvent(event);
+        server.broadcast(event.getJoinMessage());
 
         spawnToAll(server);
     }
@@ -477,8 +478,9 @@ public class PocketPlayer extends Human implements Player{
             rakLibInterface.close(this, notifyClient ? reason : "");
 
             server.getLogger().info(username + "["+identifier+"] logged out: "+reason);
-            server.broadcast(TextFormat.YELLOW + username + message);
-            server.throwEvent(new PlayerQuitEvent(this));
+            PlayerQuitEvent event = new PlayerQuitEvent(this, TextFormat.YELLOW + username + message);
+            server.throwEvent(event);
+            server.broadcast(event.getQuitMessage());
             
             server.removePlayer(this);
         }
